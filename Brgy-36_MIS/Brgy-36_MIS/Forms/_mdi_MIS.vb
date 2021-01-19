@@ -81,4 +81,15 @@ Public Class _mdi_MIS
         MsgBox(Application.StartupPath())
     End Sub
 
+    Private Sub AddResidentToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AddResidentToolStripMenuItem1.Click
+        F_Resident.MdiParent = Me
+        F_Resident.Show()
+    End Sub
+
+    Private Sub mnuLogout_Click(sender As Object, e As EventArgs) Handles mnuLogout.Click
+        strUserName = ""
+        intUserLevel = Nothing
+        Me.Hide()
+        F_Login.Show()
+    End Sub
 End Class

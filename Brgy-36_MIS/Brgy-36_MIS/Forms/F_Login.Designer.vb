@@ -27,11 +27,12 @@ Partial Class F_Login
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtUser = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lnkForgotPass = New System.Windows.Forms.LinkLabel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.lnkRegister = New System.Windows.Forms.LinkLabel()
+        Me.chkShowHide = New System.Windows.Forms.CheckBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -45,7 +46,7 @@ Partial Class F_Login
         Me.btnLogin.Location = New System.Drawing.Point(441, 333)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(266, 40)
-        Me.btnLogin.TabIndex = 1
+        Me.btnLogin.TabIndex = 3
         Me.btnLogin.Text = "LOGIN"
         Me.btnLogin.UseVisualStyleBackColor = False
         '
@@ -58,7 +59,7 @@ Partial Class F_Login
         Me.btnClose.Location = New System.Drawing.Point(441, 379)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(266, 40)
-        Me.btnClose.TabIndex = 2
+        Me.btnClose.TabIndex = 6
         Me.btnClose.Text = "CLOSE"
         Me.btnClose.UseVisualStyleBackColor = False
         '
@@ -91,21 +92,21 @@ Partial Class F_Login
         Me.txtUser.Multiline = True
         Me.txtUser.Name = "txtUser"
         Me.txtUser.Size = New System.Drawing.Size(266, 26)
-        Me.txtUser.TabIndex = 5
+        Me.txtUser.TabIndex = 1
         Me.txtUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox2
+        'txtPassword
         '
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(441, 259)
-        Me.TextBox2.MaxLength = 20
-        Me.TextBox2.Multiline = True
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
-        Me.TextBox2.Size = New System.Drawing.Size(266, 26)
-        Me.TextBox2.TabIndex = 6
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPassword.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPassword.Location = New System.Drawing.Point(441, 259)
+        Me.txtPassword.MaxLength = 20
+        Me.txtPassword.Multiline = True
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
+        Me.txtPassword.Size = New System.Drawing.Size(266, 26)
+        Me.txtPassword.TabIndex = 2
+        Me.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'PictureBox1
         '
@@ -123,7 +124,7 @@ Partial Class F_Login
         Me.lnkForgotPass.Location = New System.Drawing.Point(523, 288)
         Me.lnkForgotPass.Name = "lnkForgotPass"
         Me.lnkForgotPass.Size = New System.Drawing.Size(102, 16)
-        Me.lnkForgotPass.TabIndex = 7
+        Me.lnkForgotPass.TabIndex = 4
         Me.lnkForgotPass.TabStop = True
         Me.lnkForgotPass.Text = "Forgot Password?"
         '
@@ -141,10 +142,22 @@ Partial Class F_Login
         Me.lnkRegister.Location = New System.Drawing.Point(521, 422)
         Me.lnkRegister.Name = "lnkRegister"
         Me.lnkRegister.Size = New System.Drawing.Size(107, 16)
-        Me.lnkRegister.TabIndex = 9
+        Me.lnkRegister.TabIndex = 5
         Me.lnkRegister.TabStop = True
         Me.lnkRegister.Text = "CREATE ACCOUNT"
         Me.lnkRegister.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'chkShowHide
+        '
+        Me.chkShowHide.AutoSize = True
+        Me.chkShowHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.chkShowHide.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkShowHide.Location = New System.Drawing.Point(657, 263)
+        Me.chkShowHide.Name = "chkShowHide"
+        Me.chkShowHide.Size = New System.Drawing.Size(48, 17)
+        Me.chkShowHide.TabIndex = 9
+        Me.chkShowHide.Text = "&Show"
+        Me.chkShowHide.UseVisualStyleBackColor = True
         '
         'F_Login
         '
@@ -154,10 +167,11 @@ Partial Class F_Login
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(729, 462)
         Me.ControlBox = False
+        Me.Controls.Add(Me.chkShowHide)
         Me.Controls.Add(Me.lnkRegister)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.lnkForgotPass)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.txtUser)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -182,8 +196,9 @@ Partial Class F_Login
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtUser As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtPassword As System.Windows.Forms.TextBox
     Friend WithEvents lnkForgotPass As System.Windows.Forms.LinkLabel
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents lnkRegister As System.Windows.Forms.LinkLabel
+    Friend WithEvents chkShowHide As System.Windows.Forms.CheckBox
 End Class

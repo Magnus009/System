@@ -4,7 +4,7 @@
     Public rsDB As New ADODB.Recordset
     'User's Information
     Public strUserName As String
-    Public struserLevel As Integer
+    Public intUserLevel As Integer
 
     Public strQuery As String
 
@@ -17,7 +17,7 @@
                 .Close()
             End If
 
-            .ConnectionString = "Provider=SQLOLEDB;Data Source=sd_sql_training;Persist Security Info=True;User ID=sa;Password=81at84;Initial Catalog=Fred_Exploring"
+            .ConnectionString = "Provider=SQLOLEDB;Data Source=sd_sql_training;Persist Security Info=True;User ID=sa;Password=81at84;Initial Catalog=MIS"
             .ConnectionTimeout = 0
             .CommandTimeout = 0
             .Open()

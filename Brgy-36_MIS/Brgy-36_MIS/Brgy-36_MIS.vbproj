@@ -95,17 +95,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Forms\F_Login.Designer.vb">
       <DependentUpon>F_Login.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\F_Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\F_Resident.Designer.vb">
+      <DependentUpon>F_Resident.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\F_Resident.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\_mdi_MIS.Designer.vb">
@@ -114,12 +113,8 @@
     <Compile Include="Forms\_mdi_MIS.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MISDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MISDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Modules\M_Connection.vb" />
+    <Compile Include="Modules\M_Functions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -140,6 +135,9 @@
     <EmbeddedResource Include="Forms\F_Login.resx">
       <DependentUpon>F_Login.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\F_Resident.resx">
+      <DependentUpon>F_Resident.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\_mdi_MIS.resx">
       <DependentUpon>_mdi_MIS.vb</DependentUpon>
     </EmbeddedResource>
@@ -151,17 +149,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MISDataSet.xsc">
-      <DependentUpon>MISDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="MISDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MISDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="MISDataSet.xss">
-      <DependentUpon>MISDataSet.xsd</DependentUpon>
-    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
