@@ -92,4 +92,9 @@ Public Class _mdi_MIS
         Me.Hide()
         F_Login.Show()
     End Sub
+
+    Private Sub ViewResidentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewResidentToolStripMenuItem.Click
+        F_ResidentsRecord.MdiParent = Me
+        F_ResidentsRecord.Show()
+    End Sub
 End Class

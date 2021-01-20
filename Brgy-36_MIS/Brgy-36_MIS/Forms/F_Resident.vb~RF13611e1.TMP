@@ -11,42 +11,16 @@
 
             strQuery = "SELECT R.Code, R.FamilyName, R.GivenName, R.MiddleName, R.ExtensionName, R.BirthPlace, R.BirthDate," & vbCrLf
             strQuery &= "R.Gender, R.Citizenship, R.CivilStatus, R.ContactNo, R.Occupation, R.DateOfCaseStudy," & vbCrLf
-            strQuery &= "R.SamahanID, R.isVoter, R.inHabitant, R.Indigent, R.isPWD, R.Disabilities," & vbCrLf
-            strQuery &= "H.HouseholdNo, H.Barangay, H.Street, HM.Role, H.Municipality, H.Province, H.ContactNo FROM Residents R" & vbCrLf
+            strQuery &= "R.SamahanID, R.isVoter, R.inHabitant, R.Indigent, R.isPWD, R.Disabilities FROM Residents R" & vbCrLf
             strQuery &= "LEFT JOIN HouseholdMember HM ON R.Code = HM.ResidentCode" & vbCrLf
             strQuery &= "LEFT JOIN Household H ON HM.HouseholdNo = H.HouseholdNo" & vbCrLf
             strQuery &= "WHERE R.Code = '" & strResidentCode & "'"
             dsResidentInfo = SqlCli_MIS(strQuery)
 
             With dsResidentInfo
-                'Personal Info
-                txtID.Text = .Tables(0).Rows(0)(0)
-                txtLName.Text = .Tables(0).Rows(0)(1)
-                txtFName.Text = .Tables(0).Rows(0)(2)
-                txtMName.Text = .Tables(0).Rows(0)(3)
-                txtEName.Text = .Tables(0).Rows(0)(4)
-                txtBirthPlace.Text = .Tables(0).Rows(0)(5)
-                dtpBirthdate.Value = .Tables(0).Rows(0)(6)
-                cboSex.SelectedIndex = IIf(.Tables(0).Rows(0)(7) = "M", 1, 0)
-                txtCitizenship.Text = .Tables(0).Rows(0)(8)
-                cboCivilStatus.SelectedIndex = .Tables(0).Rows(0)(9)
-                txtContactNo.Text = .Tables(0).Rows(0)(10)
-                txtOccupation.Text = .Tables(0).Rows(0)(11)
-                dtpCaseStudy.Value = .Tables(0).Rows(0)(12)
-                cboSamahan.SelectedIndex = .Tables(0).Rows(0)(13)
-                chkVoter.Checked = .Tables(0).Rows(0)(14)
-                chkInHabitant.Checked = .Tables(0).Rows(0)(15)
-                chkIndigent.Checked = .Tables(0).Rows(0)(16)
-                chkPWD.Checked = .Tables(0).Rows(0)(17)
-                txtDisability.Text = .Tables(0).Rows(0)(18)
-                'Household Info
-                txtHouseNo.Text = .Tables(0).Rows(0)(19)
-                txtBarangay.Text = .Tables(0).Rows(0)(20)
-                txtStreet.Text = .Tables(0).Rows(0)(21)
-                cboRole.SelectedIndex = .Tables(0).Rows(0)(22)
-                txtMunicipality.Text = .Tables(0).Rows(0)(23)
-                txtProvince.Text = .Tables(0).Rows(0)(24)
-                txtHouseContactNo.Text = .Tables(0).Rows(0)(25)
+                txtID.Text = .Tables(0).Rows(0)("CODE")
+                txtLName.Text = .Tables(0).Rows(0)("FamilyName")
+                txtFName.Text = .Tables(0).Rows(0)("GivenName")
             End With
             Me.MdiParent = _mdi_MIS
             Me.Show()
@@ -61,7 +35,7 @@
         strCompleteAddress(1) = txtStreet.Text & ", "
         strCompleteAddress(2) = txtBarangay.Text & ", "
         strCompleteAddress(3) = txtMunicipality.Text & ", "
-        strCompleteAddress(4) = txtProvince.Text
+        strCompleteAddress(3) = txtProvince.Text
         Call subCompleteAddress()
     End Sub
 

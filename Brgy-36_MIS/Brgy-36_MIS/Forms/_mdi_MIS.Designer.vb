@@ -250,7 +250,7 @@ Partial Class _mdi_MIS
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.BackgroundImage = Global.Brgy_36_MIS.My.Resources.Resources.Brgy_36
+        Me.BackgroundImage = Global.Brgy_36_MIS.My.Resources.Resources.Brgy36
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(737, 558)
         Me.Controls.Add(Me.mnuMIS)

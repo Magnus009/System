@@ -1,6 +1,9 @@
 ﻿Module M_Functions
     Public strRequire As String
 
+    Public clrDeactivated = Color.FromArgb(255, 188, 54)
+    Public clrDeleted = Color.FromArgb(255, 84, 84)
+
     Public Sub fn_ClearField(container As Form)
         On Error GoTo errClear
         For Each ctrl As Control In container.Controls
@@ -23,6 +26,7 @@ errClear:
         If Err.Number <> 0 Then
             MsgBox(Err.Number & "-->" & Err.Description, MsgBoxStyle.Critical, "Invalid Action")
         End If
+        
     End Sub
 
     Private Sub groupControls(group As GroupBox)
@@ -59,6 +63,23 @@ errClear:
                     End If
             End Select
         Next
-        If strRequire <> "" Then Return True
+        If strRequire <> "" Then
+            Return True
+        End If
     End Function
+
+    Public Sub subRowColor(datTable As DataGridView)
+        Try
+            For Each row As DataGridViewRow In datTable.Rows
+                Select Case row.Cells("status").Value
+                    Case 0 'Deleted
+                        row.DefaultCellStyle.BackColor = clrDeleted
+                    Case 1 'Deactivated
+                        row.DefaultCellStyle.BackColor = clrDeactivated
+                End Select
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Module
