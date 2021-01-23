@@ -27,6 +27,13 @@ Partial Class F_ResidentsRecord
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.datResidents = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtCode = New System.Windows.Forms.TextBox()
+        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtHouseNo = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnSearch = New System.Windows.Forms.Button()
         CType(Me.datResidents, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -53,7 +60,7 @@ Partial Class F_ResidentsRecord
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.datResidents.DefaultCellStyle = DataGridViewCellStyle2
-        Me.datResidents.Location = New System.Drawing.Point(12, 56)
+        Me.datResidents.Location = New System.Drawing.Point(12, 58)
         Me.datResidents.MultiSelect = False
         Me.datResidents.Name = "datResidents"
         Me.datResidents.ReadOnly = True
@@ -70,8 +77,81 @@ Partial Class F_ResidentsRecord
         Me.datResidents.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.datResidents.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.datResidents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.datResidents.Size = New System.Drawing.Size(766, 374)
-        Me.datResidents.TabIndex = 0
+        Me.datResidents.Size = New System.Drawing.Size(766, 372)
+        Me.datResidents.TabIndex = 5
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label1.Location = New System.Drawing.Point(33, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(99, 16)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "RESIDENT CODE :"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtCode
+        '
+        Me.txtCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCode.Location = New System.Drawing.Point(138, 7)
+        Me.txtCode.MaxLength = 10
+        Me.txtCode.Name = "txtCode"
+        Me.txtCode.Size = New System.Drawing.Size(118, 21)
+        Me.txtCode.TabIndex = 1
+        Me.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txtName
+        '
+        Me.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtName.Location = New System.Drawing.Point(137, 31)
+        Me.txtName.MaxLength = 100
+        Me.txtName.Name = "txtName"
+        Me.txtName.Size = New System.Drawing.Size(255, 21)
+        Me.txtName.TabIndex = 2
+        Me.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label2.Location = New System.Drawing.Point(33, 36)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(98, 16)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "RESIDENT NAME :"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtHouseNo
+        '
+        Me.txtHouseNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtHouseNo.Location = New System.Drawing.Point(493, 4)
+        Me.txtHouseNo.MaxLength = 10
+        Me.txtHouseNo.Name = "txtHouseNo"
+        Me.txtHouseNo.Size = New System.Drawing.Size(156, 21)
+        Me.txtHouseNo.TabIndex = 3
+        Me.txtHouseNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label3.Location = New System.Drawing.Point(419, 7)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(73, 16)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "HOUSE No. :"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'btnSearch
+        '
+        Me.btnSearch.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSearch.Location = New System.Drawing.Point(663, 4)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(114, 47)
+        Me.btnSearch.TabIndex = 4
+        Me.btnSearch.Text = "&SEARCH"
+        Me.btnSearch.UseVisualStyleBackColor = True
         '
         'F_ResidentsRecord
         '
@@ -79,6 +159,13 @@ Partial Class F_ResidentsRecord
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(790, 442)
+        Me.Controls.Add(Me.btnSearch)
+        Me.Controls.Add(Me.txtHouseNo)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtName)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.txtCode)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.datResidents)
         Me.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -91,7 +178,15 @@ Partial Class F_ResidentsRecord
         Me.Text = "RESIDENT'S RECORDS"
         CType(Me.datResidents, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents datResidents As System.Windows.Forms.DataGridView
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtCode As System.Windows.Forms.TextBox
+    Friend WithEvents txtName As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtHouseNo As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents btnSearch As System.Windows.Forms.Button
 End Class

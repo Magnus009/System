@@ -1,5 +1,5 @@
 ﻿Public Class F_Resident
-    Dim intTaskMode As Integer '0->ReadOnly || 1->Create/Register || 2-> Modify/Update
+    Public intTaskMode As Integer = 1 '0->ReadOnly || 1->Create/Register || 2-> Modify/Update
     Dim strCompleteAddress(4) As String
     Private Sub chkPWD_CheckedChanged(sender As Object, e As EventArgs) Handles chkPWD.CheckedChanged
         Call subDisabled()
@@ -23,30 +23,30 @@
                 txtID.Text = .Tables(0).Rows(0)(0)
                 txtLName.Text = .Tables(0).Rows(0)(1)
                 txtFName.Text = .Tables(0).Rows(0)(2)
-                txtMName.Text = .Tables(0).Rows(0)(3)
-                txtEName.Text = .Tables(0).Rows(0)(4)
+                txtMName.Text = fn_checkNull(.Tables(0).Rows(0)(3))
+                txtEName.Text = fn_checkNull(.Tables(0).Rows(0)(4))
                 txtBirthPlace.Text = .Tables(0).Rows(0)(5)
                 dtpBirthdate.Value = .Tables(0).Rows(0)(6)
                 cboSex.SelectedIndex = IIf(.Tables(0).Rows(0)(7) = "M", 1, 0)
                 txtCitizenship.Text = .Tables(0).Rows(0)(8)
                 cboCivilStatus.SelectedIndex = .Tables(0).Rows(0)(9)
-                txtContactNo.Text = .Tables(0).Rows(0)(10)
-                txtOccupation.Text = .Tables(0).Rows(0)(11)
+                txtContactNo.Text = fn_checkNull(.Tables(0).Rows(0)(10))
+                txtOccupation.Text = fn_checkNull(.Tables(0).Rows(0)(11))
                 dtpCaseStudy.Value = .Tables(0).Rows(0)(12)
                 cboSamahan.SelectedIndex = .Tables(0).Rows(0)(13)
                 chkVoter.Checked = .Tables(0).Rows(0)(14)
                 chkInHabitant.Checked = .Tables(0).Rows(0)(15)
                 chkIndigent.Checked = .Tables(0).Rows(0)(16)
                 chkPWD.Checked = .Tables(0).Rows(0)(17)
-                txtDisability.Text = .Tables(0).Rows(0)(18)
+                txtDisability.Text = fn_checkNull(.Tables(0).Rows(0)(18))
                 'Household Info
-                txtHouseNo.Text = .Tables(0).Rows(0)(19)
-                txtBarangay.Text = .Tables(0).Rows(0)(20)
-                txtStreet.Text = .Tables(0).Rows(0)(21)
-                cboRole.SelectedIndex = .Tables(0).Rows(0)(22)
-                txtMunicipality.Text = .Tables(0).Rows(0)(23)
-                txtProvince.Text = .Tables(0).Rows(0)(24)
-                txtHouseContactNo.Text = .Tables(0).Rows(0)(25)
+                txtHouseNo.Text = fn_checkNull(.Tables(0).Rows(0)(19))
+                txtBarangay.Text = fn_checkNull(.Tables(0).Rows(0)(20))
+                txtStreet.Text = fn_checkNull(.Tables(0).Rows(0)(21))
+                cboRole.SelectedIndex = fn_checkNull(.Tables(0).Rows(0)(22))
+                txtMunicipality.Text = fn_checkNull(.Tables(0).Rows(0)(23))
+                txtProvince.Text = fn_checkNull(.Tables(0).Rows(0)(24))
+                txtHouseContactNo.Text = fn_checkNull(.Tables(0).Rows(0)(25))
             End With
             Me.MdiParent = _mdi_MIS
             Me.Show()
@@ -56,6 +56,7 @@
     End Sub
 
     Private Sub F_Resident_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'taskMode(intTaskMode, Me)
         Call subDisabled()
         strCompleteAddress(0) = txtHouseNo.Text & " "
         strCompleteAddress(1) = txtStreet.Text & ", "
@@ -185,4 +186,5 @@ errSaving:
         txtCompleteAdd.Text &= strCompleteAddress(3)
         txtCompleteAdd.Text &= strCompleteAddress(4)
     End Sub
+
 End Class

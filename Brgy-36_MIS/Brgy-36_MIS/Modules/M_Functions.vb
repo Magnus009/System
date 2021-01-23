@@ -82,4 +82,71 @@ errClear:
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Public Function fn_checkNull(var As Object) As String
+        Dim strReturn As String
+
+        Select Case var.GetType()
+            Case GetType(String)
+                If IsDBNull(var) Then
+                    strReturn = ""
+                Else
+                    strReturn = var
+                End If
+            Case GetType(Integer)
+                If IsDBNull(var) Then
+                    strReturn = "0"
+                Else
+                    strReturn = var
+                End If
+        End Select
+        Return strReturn
+    End Function
+
+    Public Sub taskMode(intTaskMode As Integer, container As Control) '0->ReadOnly || 1->Create/Register || 2-> Modify/Update
+        Dim blnWrite As Boolean = False
+        Dim blnShow As Boolean = False
+
+        Select Case intTaskMode
+            Case 0 'Read Only
+                blnWrite = False
+                blnShow = False
+            Case 1 'Create/Register
+                blnWrite = True
+                blnShow = True
+            Case 2 'Modify/Update
+                blnWrite = True
+                blnShow = False
+        End Select
+
+        Try
+            For Each ctrl As Control In container.Controls
+                Select Case ctrl.GetType()
+                    Case GetType(GroupBox)
+                        taskMode(intTaskMode, ctrl)
+                    Case Else
+                        If Strings.Right(ctrl.Tag, 3) = "_up" Then
+                            If ctrl.GetType() = GetType(TextBox) Then
+                                Dim txt As TextBox
+                                txt = ctrl
+                                txt.ReadOnly = Not blnWrite
+                                txt.BackColor = Color.White
+                            ElseIf ctrl.GetType() = GetType(MaskedTextBox) Then
+                                Dim mtxt As MaskedTextBox
+                                mtxt = ctrl
+                                mtxt.ReadOnly = Not blnWrite
+                                mtxt.BackColor = Color.White
+                            Else
+                                ctrl.Enabled = blnWrite
+                            End If
+                        End If
+                        If ctrl.Tag = "reqSign" Then
+                            ctrl.Visible = blnShow
+                        End If
+                End Select
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
 End Module

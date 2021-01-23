@@ -95,6 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Forms\F_HouseholdList.Designer.vb">
+      <DependentUpon>F_HouseholdList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\F_HouseholdList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\F_Login.Designer.vb">
       <DependentUpon>F_Login.vb</DependentUpon>
     </Compile>
@@ -138,6 +144,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\F_HouseholdList.resx">
+      <DependentUpon>F_HouseholdList.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\F_Login.resx">
       <DependentUpon>F_Login.vb</DependentUpon>
     </EmbeddedResource>

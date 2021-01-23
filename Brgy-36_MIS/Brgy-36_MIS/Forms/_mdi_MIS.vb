@@ -78,7 +78,7 @@ Public Class _mdi_MIS
     Private m_ChildFormNumber As Integer
 
     Private Sub _mdi_MIS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MsgBox(Application.StartupPath())
+        'MsgBox(Application.StartupPath())
     End Sub
 
     Private Sub AddResidentToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AddResidentToolStripMenuItem1.Click
