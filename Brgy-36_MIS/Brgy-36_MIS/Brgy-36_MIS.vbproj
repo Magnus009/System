@@ -119,6 +119,12 @@
     <Compile Include="Forms\F_ResidentsRecord.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\F_UserResitration.Designer.vb">
+      <DependentUpon>F_UserResitration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\F_UserResitration.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\_mdi_MIS.Designer.vb">
       <DependentUpon>_mdi_MIS.vb</DependentUpon>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\F_ResidentsRecord.resx">
       <DependentUpon>F_ResidentsRecord.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\F_UserResitration.resx">
+      <DependentUpon>F_UserResitration.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\_mdi_MIS.resx">
       <DependentUpon>_mdi_MIS.vb</DependentUpon>

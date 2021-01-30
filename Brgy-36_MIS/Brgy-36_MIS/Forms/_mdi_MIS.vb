@@ -83,6 +83,7 @@ Public Class _mdi_MIS
 
     Private Sub AddResidentToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AddResidentToolStripMenuItem1.Click
         F_Resident.MdiParent = Me
+        F_Resident.intTaskMode = 1
         F_Resident.Show()
     End Sub
 

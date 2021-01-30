@@ -7,18 +7,30 @@
     Public intUserLevel As Integer
 
     Public strQuery As String
-    Public strConnection As String = "Data Source=sd_sql_training;Persist Security Info=True;User ID=sa;Password=81at84;Initial Catalog=MIS"
-
-    Public Function SqlCli_MIS(strQueryCommand As String) As DataSet
+    Public Function SqlCli_MIS(strQueryCommand As String)
         Try
-            Dim dsNew As New DataSet
-            Dim sqlDB As New SqlClient.SqlConnection(strConnection)
-            Dim apdDB As New SqlClient.SqlDataAdapter(strQueryCommand, sqlDB)
+            Dim sqlConnect As New SqlClient.SqlConnection(My.Resources.ConnectionString)
+            Dim sqlAdapter As New SqlClient.SqlDataAdapter(strQueryCommand, sqlConnect)
 
-            sqlDB.Open()
-            apdDB.Fill(dsNew)
-            sqlDB.Close()
-            Return dsNew
+            If InStr(strQueryCommand, "SELECT") > 0 Then
+                Dim dsNew As New DataSet
+
+                sqlConnect.Open()
+                sqlAdapter.Fill(dsNew)
+                sqlConnect.Close()
+                Return dsNew
+            Else
+                Dim sqlCommand As New SqlClient.SqlCommand(strQueryCommand, sqlConnect)
+
+                sqlCommand.CommandType = CommandType.Text
+                sqlConnect.Open()
+                If sqlCommand.ExecuteNonQuery.Equals(0) Then
+                    Return False
+                Else
+                    Return True
+                End If
+            End If
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

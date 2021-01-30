@@ -15,7 +15,7 @@
                 If cboSearch.Text <> "" And txtSearch.Text <> "" Then
                     strQuery &= "AND " & IIf(cboSearch.SelectedIndex = 5, "R.", "H.") & cboSearch.Text & " LIKE '%" & txtSearch.Text & "%'"
                 End If
-                dsHouses = SqlCli_MIS(strQuery) 'TEST
+                dsHouses = SqlCli_MIS(strQuery)
                 .DataSource = dsHouses
                 .DataMember = "table"
 
@@ -40,7 +40,14 @@
     End Sub
 
     Private Sub datHouses_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datHouses.CellContentClick
-        MsgBox(e.ColumnIndex)
+        If e.ColumnIndex = 4 Then
+            If MsgBox("Do you want to select this house as your reference?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "SELECT HOUSE") = vbYes Then
+                F_Resident.txtHouseNo.Text = datHouses.Rows(e.RowIndex).Cells(0).Value
+                Me.Close()
+                F_Resident.getHouseInfo(datHouses.Rows(e.RowIndex).Cells(0).Value)
+                Call F_Resident.subCompleteAddress()
+            End If
+        End If
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click

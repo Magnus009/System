@@ -69,5 +69,14 @@ Namespace My.Resources
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Data Source=sd_sql_training;Persist Security Info=True;User ID=sa;Password=81at84;Initial Catalog=MIS.
+        '''</summary>
+        Friend ReadOnly Property ConnectionString() As String
+            Get
+                Return ResourceManager.GetString("ConnectionString", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace

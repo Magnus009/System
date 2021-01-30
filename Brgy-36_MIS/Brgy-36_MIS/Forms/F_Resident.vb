@@ -1,5 +1,5 @@
 ﻿Public Class F_Resident
-    Public intTaskMode As Integer = 1 '0->ReadOnly || 1->Create/Register || 2-> Modify/Update
+    Public intTaskMode As Integer  '0->ReadOnly || 1->Create/Register || 2-> Modify/Update
     Dim strCompleteAddress(4) As String
     Private Sub chkPWD_CheckedChanged(sender As Object, e As EventArgs) Handles chkPWD.CheckedChanged
         Call subDisabled()
@@ -81,62 +81,57 @@
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        On Error GoTo errSaving
-        If subCheckRequire(Me) Then
-            MsgBox("Please complete the required fields(*):" & vbCrLf & strRequire, MsgBoxStyle.Exclamation, "Required Items")
-            strRequire = ""
-        Else
-            intTaskMode = 1
-            If intTaskMode = 1 Then
-                Call MISConnect()
-                strQuery = ""
-                strQuery = "EXECUTE sp_registerResident " & vbCrLf
-                strQuery &= "'" & txtLName.Text & "'," & vbCrLf
-                strQuery &= "'" & txtFName.Text & "'," & vbCrLf
-                strQuery &= "'" & txtMName.Text & "'," & vbCrLf
-                strQuery &= "'" & txtEName.Text & "'," & vbCrLf
-                strQuery &= "'" & Strings.Left(UCase(cboSex.Text), 1) & "'," & vbCrLf
-                strQuery &= "'" & Format(dtpBirthdate.Value, "Short Date") & "'," & vbCrLf
-                strQuery &= "'" & txtBirthPlace.Text & "'," & vbCrLf
-                strQuery &= "'" & txtCitizenship.Text & "'," & vbCrLf
-                strQuery &= cboCivilStatus.SelectedIndex & "," & vbCrLf
-                strQuery &= "'" & txtContactNo.Text & "'," & vbCrLf
-                strQuery &= "'" & txtOccupation.Text & "'," & vbCrLf
-                strQuery &= cboSamahan.SelectedIndex & "," & vbCrLf
-                strQuery &= chkVoter.Checked & "," & vbCrLf
-                strQuery &= chkInHabitant.Checked & "," & vbCrLf
-                strQuery &= chkIndigent.Checked & "," & vbCrLf
-                strQuery &= chkPWD.Checked & "," & vbCrLf
-                strQuery &= "'" & txtDisability.Text & "'," & vbCrLf
-                strQuery &= "'" & dtpCaseStudy.Value & "'," & vbCrLf
-                strQuery &= "'" & txtHouseNo.Text & "'," & vbCrLf
-                strQuery &= "'" & txtBarangay.Text & "'," & vbCrLf
-                strQuery &= "'" & txtStreet.Text & "'," & vbCrLf
-                strQuery &= "'" & txtMunicipality.Text & "'," & vbCrLf
-                strQuery &= "'" & txtProvince.Text & "'," & vbCrLf
-                strQuery &= "'" & txtHouseContactNo.Text & "'," & vbCrLf
-                strQuery &= cboRole.SelectedIndex & "," & vbCrLf
-                strQuery &= "'" & strUserName & "'"
-                conDB.Execute(strQuery)
+        Try
+            If subCheckRequire(Me) Then
+                MsgBox("Please complete the required fields(*):" & vbCrLf & strRequire, MsgBoxStyle.Exclamation, "Required Items")
+                strRequire = ""
+            Else
+                If intTaskMode = 1 Then
+                    strQuery = ""
+                    strQuery = "EXECUTE sp_registerResident " & vbCrLf
+                    strQuery &= "'" & txtLName.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtFName.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtMName.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtEName.Text & "'," & vbCrLf
+                    strQuery &= "'" & Strings.Left(UCase(cboSex.Text), 1) & "'," & vbCrLf
+                    strQuery &= "'" & Format(dtpBirthdate.Value, "Short Date") & "'," & vbCrLf
+                    strQuery &= "'" & txtBirthPlace.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtCitizenship.Text & "'," & vbCrLf
+                    strQuery &= cboCivilStatus.SelectedIndex & "," & vbCrLf
+                    strQuery &= "'" & txtContactNo.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtOccupation.Text & "'," & vbCrLf
+                    strQuery &= cboSamahan.SelectedIndex & "," & vbCrLf
+                    strQuery &= chkVoter.Checked & "," & vbCrLf
+                    strQuery &= chkInHabitant.Checked & "," & vbCrLf
+                    strQuery &= chkIndigent.Checked & "," & vbCrLf
+                    strQuery &= chkPWD.Checked & "," & vbCrLf
+                    strQuery &= "'" & txtDisability.Text & "'," & vbCrLf
+                    strQuery &= "'" & dtpCaseStudy.Value & "'," & vbCrLf
+                    strQuery &= "'" & txtHouseNo.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtBarangay.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtStreet.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtMunicipality.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtProvince.Text & "'," & vbCrLf
+                    strQuery &= "'" & txtHouseContactNo.Text & "'," & vbCrLf
+                    strQuery &= cboRole.SelectedIndex & "," & vbCrLf
+                    strQuery &= "'" & strUserName & "'"
 
-                MsgBox("Resident Registered Successfully", MsgBoxStyle.Information, "Registration")
+                    If SqlCli_MIS(strQuery) Then
+                        MsgBox("Resident Registered Successfully", MsgBoxStyle.Information, "Registration")
+                        Me.Close()
+                    Else
+                        MsgBox("Resident Registered Failed", MsgBoxStyle.Critical, "Registration")
+                    End If
+
+                End If
             End If
-        End If
-errSaving:
-        If Err.Number <> 0 Then
-            MsgBox(Err.Number & "-->" & Err.Description, MsgBoxStyle.Critical, "Resident's Information Error")
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub dtpBirthdate_ValueChanged(sender As Object, e As EventArgs) Handles dtpBirthdate.ValueChanged
         txtAge.Text = Math.Floor(DateDiff(DateInterval.Day, dtpBirthdate.Value, Now) / 365.25)
-    End Sub
-
-    Private Sub txtHouseNo_Leave(sender As Object, e As EventArgs) Handles txtHouseNo.Leave
-        If txtHouseNo.Text <> "" Then
-            strCompleteAddress(0) = txtHouseNo.Text & " "
-            Call subCompleteAddress()
-        End If
     End Sub
 
     Private Sub txtStreet_LostFocus(sender As Object, e As EventArgs) Handles txtStreet.LostFocus
@@ -179,7 +174,7 @@ errSaving:
         End If
     End Sub
 
-    Private Sub subCompleteAddress()
+    Public Sub subCompleteAddress()
         txtCompleteAdd.Text = strCompleteAddress(0)
         txtCompleteAdd.Text &= strCompleteAddress(1)
         txtCompleteAdd.Text &= strCompleteAddress(2)
@@ -187,4 +182,32 @@ errSaving:
         txtCompleteAdd.Text &= strCompleteAddress(4)
     End Sub
 
+    Private Sub btnHouseList_Click(sender As Object, e As EventArgs) Handles btnHouseList.Click
+        F_HouseholdList.ShowDialog()
+    End Sub
+
+    Public Sub getHouseInfo(strHouseNo As String)
+        Dim dsHouseInfo As New DataSet
+
+        If strHouseNo <> "" Then
+            strQuery = "SELECT * FROM Household WHERE HouseholdNo = " & strHouseNo
+            dsHouseInfo = SqlCli_MIS(strQuery)
+
+            With dsHouseInfo
+                If .Tables(0).Rows.Count <> 0 Then
+                    txtBarangay.Text = fn_checkNull(.Tables(0).Rows(0)(2))
+                    txtStreet.Text = fn_checkNull(.Tables(0).Rows(0)(3))
+                    txtMunicipality.Text = fn_checkNull(.Tables(0).Rows(0)(4))
+                    txtProvince.Text = fn_checkNull(.Tables(0).Rows(0)(5))
+                    txtHouseContactNo.Text = fn_checkNull(.Tables(0).Rows(0)(6))
+
+                    strCompleteAddress(1) = txtStreet.Text & " Street , "
+                    strCompleteAddress(2) = txtBarangay.Text & ", "
+                    strCompleteAddress(3) = txtMunicipality.Text & ", "
+                    strCompleteAddress(4) = txtProvince.Text
+                    Call subCompleteAddress()
+                End If
+            End With
+        End If
+    End Sub
 End Class

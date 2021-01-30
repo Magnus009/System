@@ -72,7 +72,7 @@ Partial Class F_Resident
         Me.Label21 = New System.Windows.Forms.Label()
         Me.grpHouseHold = New System.Windows.Forms.GroupBox()
         Me.txtHouseNo = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnHouseList = New System.Windows.Forms.Button()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.Label32 = New System.Windows.Forms.Label()
@@ -737,7 +737,7 @@ Partial Class F_Resident
         'grpHouseHold
         '
         Me.grpHouseHold.Controls.Add(Me.txtHouseNo)
-        Me.grpHouseHold.Controls.Add(Me.Button1)
+        Me.grpHouseHold.Controls.Add(Me.btnHouseList)
         Me.grpHouseHold.Controls.Add(Me.Label34)
         Me.grpHouseHold.Controls.Add(Me.Label33)
         Me.grpHouseHold.Controls.Add(Me.Label32)
@@ -782,17 +782,17 @@ Partial Class F_Resident
         Me.txtHouseNo.Tag = "*House No._up"
         Me.txtHouseNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Button1
+        'btnHouseList
         '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(185, 38)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(29, 22)
-        Me.Button1.TabIndex = 55
-        Me.Button1.Text = "..."
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnHouseList.BackColor = System.Drawing.Color.White
+        Me.btnHouseList.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnHouseList.Font = New System.Drawing.Font("Century Gothic", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHouseList.Location = New System.Drawing.Point(185, 38)
+        Me.btnHouseList.Name = "btnHouseList"
+        Me.btnHouseList.Size = New System.Drawing.Size(29, 22)
+        Me.btnHouseList.TabIndex = 55
+        Me.btnHouseList.Text = "..."
+        Me.btnHouseList.UseVisualStyleBackColor = False
         '
         'Label34
         '
@@ -1171,5 +1171,5 @@ Partial Class F_Resident
     Friend WithEvents Label48 As System.Windows.Forms.Label
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents btnSave As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnHouseList As System.Windows.Forms.Button
 End Class

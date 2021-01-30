@@ -32,6 +32,7 @@
 
     Private Sub datResidents_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datResidents.CellClick
         If e.ColumnIndex = 0 Then
+            F_Resident.intTaskMode = IIf(intUserLevel = 0, 2, 0)
             Call F_Resident.loadResidentRecord(datResidents.Rows(e.RowIndex).Cells(1).Value)
         End If
     End Sub
