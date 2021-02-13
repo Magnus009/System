@@ -16,7 +16,7 @@
             End If
 
             datResidents.DataSource = SqlCli_MIS(strQuery)
-            datResidents.DataMember = "table"
+            datResidents.DataMember = "Table"
 
             'add Button
             Dim btnView As New DataGridViewButtonColumn
@@ -49,7 +49,9 @@
         If txtHouseNo.Text <> "" Then
             strFilter &= " H.HouseholdNo = " & txtHouseNo.Text & " OR"
         End If
-        strFilter = Strings.Left(strFilter, Len(strFilter) - 2)
+        If strFilter <> "" Then
+            strFilter = Strings.Left(strFilter, Len(strFilter) - 2)
+        End If
         Call loadResidentRecords(strFilter)
     End Sub
 End Class

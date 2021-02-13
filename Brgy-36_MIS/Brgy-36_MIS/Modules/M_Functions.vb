@@ -51,6 +51,8 @@ errClear:
     End Sub
 
     Public Function subCheckRequire(container As Control) As Boolean
+        Dim blnIncomplete As Boolean = False
+
         For Each ctrl As Control In container.Controls
             Select Case ctrl.GetType()
                 Case GetType(GroupBox)
@@ -64,8 +66,10 @@ errClear:
             End Select
         Next
         If strRequire <> "" Then
-            Return True
+            blnIncomplete = True
         End If
+
+        Return blnIncomplete
     End Function
 
     Public Sub subRowColor(datTable As DataGridView)
@@ -84,7 +88,7 @@ errClear:
     End Sub
 
     Public Function fn_checkNull(var As Object) As String
-        Dim strReturn As String
+        Dim strReturn As String = ""
 
         Select Case var.GetType()
             Case GetType(String)
